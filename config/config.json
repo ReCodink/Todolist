@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "recoding",
+    "password": "16072001",
+    "database": "todolist",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "recoding",
+    "password": "16072001",
+    "database": "todolist",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "recoding",
+    "password": "16072001",
+    "database": "todolist",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
