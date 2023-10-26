@@ -3,10 +3,9 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const winston = require('winston');
 const PORT = process.env.APP_PORT || 3090;
-const swaggerUI = require('swagger-ui-express');
-const swaggerSpec = require('./swagger.json');
-
+const cors = require('cors');
 const todoRouter = require('./routes/todoRoutes');
+const errorHandler = require('./middleware/error-handler');
 
 dotenv.config();
 
@@ -19,7 +18,7 @@ const logger = winston.createLogger({
 });
 
 // Middleware untuk logging
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use(cors());
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.originalUrl}`);
     next();
@@ -27,6 +26,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(todoRouter);
+app.use(errorHandler);
 
 // For unit testing purpose
 if(process.env.NODE_ENV !="test"){
