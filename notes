@@ -1,0 +1,1 @@
+sudo docker container create --name postgresdata --publish 5444:5432 --mount "type=bind,source=/home/recodink/belajar-docker-dasar/postgres-data,destination=/var/lib/postgres/data" --env POSTGRES_USER=recodink --env POSTGRES_PASSWORD=16072001 postgres:latest
