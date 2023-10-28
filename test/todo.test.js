@@ -1,7 +1,8 @@
-const { response } = require('express');
 const app = require('../app');
 const request = require('supertest');
 
+
+// Before Test, check data from table todolist for without failed 
 describe('Todo Unit Test', () => {
     test('Add Todo Successfully', (done) => {
         const newTodo = {
