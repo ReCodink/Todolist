@@ -28,6 +28,10 @@ app.use(morgan('dev'));
 app.use(todoRouter);
 app.use(errorHandler);
 
+app.get('/', (req, res, next) => {
+    res.send('Hello World');
+});
+
 // For unit testing purpose
 if(process.env.NODE_ENV !="test"){
     app.listen(PORT, () => {
