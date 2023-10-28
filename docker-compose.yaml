@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  todolist_app:
+    container_name: todolist_app
+    build: .
+    image: raihan1607/todolist_v1_app
+    ports:
+      - "3090:3090"
+    depends_on:
+      - node_db
+    volumes:
+      - ".:/app/"
+    networks:
+      - app_tree
+    restart: always
+
+  node_db:
+    container_name: node_db
+    image: postgres:16-alpine
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - todo_db_data:/var/lib/postgres/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    networks:
+      - app_tree
+
+volumes:
+  todo_db_data:
+    name: todo_db_data
+    driver: local
+
+networks:
+  app_tree:
+    name: app_tree
+    driver: bridge
