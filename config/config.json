@@ -1,23 +1,22 @@
 {
   "development": {
-    "username": "recoding",
+    "username": "recodink",
     "password": "16072001",
     "database": "todolist",
-    "host": "localhost",
+    "host": "node_db",
     "dialect": "postgres"
   },
   "test": {
-    "username": "recoding",
+    "username": "recodink",
     "password": "16072001",
     "database": "todolist",
-    "host": "localhost",
+    "host": "node_db",
     "dialect": "postgres"
   },
   "production": {
-    "username": "recoding",
-    "password": "16072001",
+    "username": "postgres",
+    "password": "root",
     "database": "todolist",
-    "host": "localhost",
     "dialect": "postgres"
   }
 }
